@@ -5,8 +5,7 @@
 
 template<typename T>
 class TPQueue {
-  
-  private:
+ private:
     struct st1 {
      T data;
      st1 *next;
