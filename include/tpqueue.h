@@ -4,6 +4,7 @@
 #define INCLUDE_TPQUEUE_H_
 
 template<typename T>
+
 class TPQueue {
  private:
     struct structItem {
