@@ -1,9 +1,11 @@
 // Copyright 2022 NNTU-CS
+#include <string>
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
 
 template<typename T>
 class TPQueue {
+  
   private:
     struct st1 {
      T data;
