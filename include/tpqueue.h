@@ -6,26 +6,26 @@
 template<typename T>
 class TPQueue {
  private:
-    struct st1 {
+    struct structItem {
      T data;
-     st1 *next;
-     st1 *prev;
+     structItem *next;
+     structItem *prev;
     };
-    TPQueue::st1 *create(const T &data) {
-     st1 * itm = new st1;
-     itm->data = data;
-     itm->next = nullptr;
-     itm->prev = nullptr;
-     return itm;
+    TPQueue::structItem *create(const T &data) {
+     structItem * item = new structItem;
+     item->data = data;
+     item->next = nullptr;
+     item->prev = nullptr;
+     return item;
     }
-    st1 *head;
-    st1 *tail;
-    st1 *current;
+    structItem *head;
+    structItem *tail;
+    structItem *current;
 
  public:
     T pop() {
      if (head) {
-       st1 *temp = head->next;
+       structItem *temp = head->next;
        if (temp)
          temp->prev = nullptr;
        T data = head->data;
@@ -37,29 +37,27 @@ class TPQueue {
        }
     }
     void push(const T& data) {
-     st1 *t = head;
-     st1 *item = create(data);
-     while (t && t->data.prior >= data.prior)
-       t = t->next;
-     if (!t && head) {
+     structItem *temp = head;
+     structItem *item = create(data);
+     while (temp && temp->data.prior >= data.prior)
+       temp = temp->next;
+     if (!temp && head) {
        tail->next = item;
        tail->next->prev = tail;
        tail = item;
-     } else if (!t && !head) {
+     } else if (!temp && !head) {
          head = tail = item;
-       } else if (!t->prev) {
-           t->prev = item;
-           item->next = t;
+       } else if (!temp->prev) {
+           temp->prev = item;
+           item->next = temp;
            head = item;
          } else {
-             t->prev->next = item;
-             item->prev = t->prev;
-             item->next = t;
-             t->prev = item;
+             temp->prev->next = item;
+             item->prev = temp->prev;
+             item->next = temp;
+             temp->prev = item;
            }
     }
-};
-
 struct SYM {
   char ch;
   int prior;
