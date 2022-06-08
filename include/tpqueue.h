@@ -1,10 +1,9 @@
 // Copyright 2022 NNTU-CS
-#include <string>
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
+#include <string>
 
 template<typename T>
-
 class TPQueue {
  private:
     struct ITEM {
@@ -22,7 +21,7 @@ class TPQueue {
     ITEM* head;
     ITEM* tail;
 
-public:
+ public:
     T pop() {
         if (head) {
             ITEM* a = head->next;
@@ -41,27 +40,29 @@ public:
         ITEM* item = create(data);
         while (a && a->data.prior >= data.prior)
             a = a->next;
-          if (!a && head) { // вставка в конец
+        if (!a && head) { // вставка в конец
             tail->next = item;
             tail->next->prev = tail;
             tail = item;
-        } else if (!a && !head) {
+        } else if (!a && !head) {// вставка в пустой список
             head = tail = item;
-        } else if (!a->prev) { 
+        } else if (!a->prev) { // вставка в начало
             a->prev = item;
             item->next = a;
             head = item;
-        } else { 
+        } else { // вставка в середину
             a->prev->next = item;
             item->prev = a->prev;
             item->next = a;
             a->prev = item;
         }
     }
-    
-struct SYM {
-  char ch;
-  int prior;
 };
 
-#endif  // INCLUDE_TPQUEUE_H_
+  struct SYM {
+      char ch;
+      int prior;
+  };
+
+
+#endif // INCLUDE_TPQUEUE_H_
