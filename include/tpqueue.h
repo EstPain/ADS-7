@@ -6,7 +6,6 @@
 template<typename T>
 
 class TPQueue {
- class TPQueue {
  private:
     struct ITEM {
         T data;
@@ -23,7 +22,7 @@ class TPQueue {
     ITEM* head;
     ITEM* tail;
 
- public:
+public:
     T pop() {
         if (head) {
             ITEM* a = head->next;
@@ -42,17 +41,17 @@ class TPQueue {
         ITEM* item = create(data);
         while (a && a->data.prior >= data.prior)
             a = a->next;
-        if (!a && head) { // вставка в конец
+          if (!a && head) { // вставка в конец
             tail->next = item;
             tail->next->prev = tail;
             tail = item;
-        } else if (!a && !head) {// вставка в пустой список
+        } else if (!a && !head) {
             head = tail = item;
-        } else if (!a->prev) { // вставка в начало
+        } else if (!a->prev) { 
             a->prev = item;
             item->next = a;
             head = item;
-        } else { // вставка в середину
+        } else { 
             a->prev->next = item;
             item->prev = a->prev;
             item->next = a;
@@ -65,5 +64,4 @@ struct SYM {
   int prior;
 };
 
-explicit SYM(char _ch = '0', int _prior = 0) : ch(_ch), prior(_prior) {}
 #endif  // INCLUDE_TPQUEUE_H_
