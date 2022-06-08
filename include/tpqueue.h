@@ -58,7 +58,7 @@ public:
             a->prev = item;
         }
     }
-    }
+    
 struct SYM {
   char ch;
   int prior;
